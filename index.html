@@ -1,0 +1,40 @@
+<!--[if lte IE 8]><script>(function(){var e="abbr,article,aside,audio,canvas,datalist,details,figure,footer,header,hgroup,mark,menu,meter,nav,output,progress,section,time,video".split(','),i=e.length;while(i--){document.createElement(e[i]);}}());</script><![endif]-->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>测试</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	    <canvas id="canvas"></canvas>
+
+	<!-- <video src="./mp4/test.mp4" controls="controls"> -->
+	<!-- </video> -->
+</body>
+</html>
+
+   <script type="text/javascript">
+
+        var can = document.getElementById('canvas');
+        var ctx = can.getContext('2d');
+
+        var img = new Image();
+        img.onload = function(){
+            can.width = img.width;
+            can.height = img.height;
+            ctx.drawImage(img, 0, 0, img.width, img.height);
+        }
+        img.src = './img/test.png';
+
+        can.onclick = function() {
+            ctx.translate(img.width-1, img.height-1);
+            ctx.rotate(Math.PI);
+            ctx.drawImage(img, 0, 0, img.width, img.height);
+        };
+
+   document.write(can.toDataURL()); //isn't writing the correct base64 image
+
+
+    </script>
